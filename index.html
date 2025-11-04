@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Harmony Trygstad</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #e8f5e8;
+      --sage: #d2b48c;
+      --soft-sage: #bdc5a5;
+      --olive: #8b8e76;
+      --dark-olive: #2d3021;
+      --soft-white: #ffffff;
+      --warm-brown: #4b3830;
+      --stone: #ebe6e6;
+      --accent: #b49e6f;
+      --text-main: #222222;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--cream);
+      color: var(--text-main);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+
+    /* -------- NAVIGATION -------- */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.2rem;
+      background: rgba(240, 234, 216, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--soft-sage);
+      box-shadow: 0 2px 15px rgba(45,48,33,0.1);
+      transition: var(--transition);
+    }
+
+
+    nav.scrolled {
+      padding: 0.8rem;
+      background: rgba(240, 234, 216, 0.98);
+    }
+
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark-olive);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: var(--transition);
+    }
+
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--sage);
+      border-radius: 20px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+
+    nav a:hover {
+      color: var(--cream);
+    }
+
+
+    nav a:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+
+    nav a.active {
+      color: var(--cream);
+      background: var(--sage);
+    }
+
+
+    /* -------- BACKGROUND & STARS -------- */
+    .background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--cream), var(--soft-sage), var(--sage));
+      background-size: 400% 400%;
+      animation: bgShift 18s ease infinite;
+      z-index: -2;
+    }
+
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--soft-white);
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: twinkle 3s infinite alternate;
+    }
+
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(1); }
+      100% { opacity: 0.9; transform: scale(1.8); }
+    }
+
+
+    /* -------- WELCOME SECTION -------- */
+    .container {
+      max-width: 1000px;
+      margin: 4rem auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 3.5rem;
+      border-radius: 30px;
+      box-shadow:
+        0 10px 30px rgba(45,48,33,0.15),
+        0 0 0 1px rgba(255,255,255,0.1);
+      text-align: center;
+      transform: translateY(0);
+      transition: var(--transition);
+    }
+
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 15px 40px rgba(45,48,33,0.2),
+        0 0 0 1px rgba(255,255,255,0.2);
+    }
+
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      font-family: 'Playfair Display', 'Lora', serif;
+      color: var(--dark-olive);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+
+    h1::after {
+      content: '';
+      position: absolute;
+      left: -10px;
+      right: -10px;
+      bottom: 8px;
+      height: 12px;
+      background: var(--soft-sage);
+      opacity: 0.3;
+      z-index: -1;
+      transform: skew(-12deg);
+    }
+
+
+    h2, h3 { font-family: 'Playfair Display', 'Lora', serif; }
+
+    .welcome-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    /* profile avatar */
+    .profile-photo {
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(45,48,33,0.18);
+      border: 4px solid rgba(255,255,255,0.8);
+    }
+    .profile-photo img {
+      display: block;
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    /* button style matching resume page */
+    .download-btn, .learn-more-btn {
+      display: inline-block;
+      background: var(--sage);
+      color: var(--soft-white);
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s ease;
+      margin-top: 1rem;
+    }
+    .download-btn:hover, .learn-more-btn:hover { background: var(--olive); }
+
+    /* simple reveal animation */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* decorative plant sprigs */
+    .container { position: relative; }
+    .sprig {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      opacity: 0.55;
+      filter: drop-shadow(0 4px 8px rgba(45,48,33,0.15));
+      pointer-events: none;
+    }
+    .sprig--tl { top: 16px; left: 16px; transform: rotate(-10deg); }
+    .sprig--br { bottom: 16px; right: 16px; transform: rotate(15deg); }
+
+    .social-links {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--cream);
+      color: var(--dark-olive);
+      font-size: 1.2rem;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+
+    .social-icon:hover {
+      background: var(--sage);
+      color: var(--cream);
+      transform: translateY(-3px) rotate(8deg);
+      border-color: var(--cream);
+    }
+
+
+    /* -------- RESPONSIVE -------- */
+    @media (max-width: 768px) {
+      nav { flex-wrap: wrap; gap: 1rem; }
+      h1 { font-size: 2.2rem; }
+      .welcome-text { font-size: 1rem; padding: 0 1rem; }
+      .container { margin: 2rem 1rem; padding: 2rem; }
+      
+      /* Hobbies section responsive */
+      .hobby-container {
+        flex-direction: column !important;
+        text-align: center;
+      }
+      
+      .hobby-image {
+        flex: none !important;
+        width: 100% !important;
+        max-width: 250px !important;
+        margin: 0 auto 1rem auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Dynamic earthy gradient background -->
+  <div class="background"></div>
+
+
+  <!-- Twinkling stars -->
+  <div class="stars" id="stars"></div>
+
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="hobbies.html">Hobbies</a>
+    <a href="duluth.html">Discover Duluth</a>
+    <a href="resume.html">Resume</a>
+    <a href="career.html">Career Interests</a>
+    <a href="game.html">Game</a>
+  </nav>
+
+  <!-- Welcome Message -->
+  <section class="container reveal">
+    <div class="sprig sprig--tl" aria-hidden="true">
+      <img src="Images/leaf.webp" alt="" width="72" height="72" style="object-fit: contain;">
+    </div>
+    <div class="sprig sprig--br" aria-hidden="true">
+      <img src="Images/leaf.webp" alt="" width="72" height="72" style="object-fit: contain;">
+    </div>
+    <div class="profile-photo" aria-hidden="false">
+      <img src="Images/harmony.png" alt="Harmony portrait" width="220" height="220" loading="eager" decoding="async" fetchpriority="high" style="image-rendering:auto;">
+    </div>
+    <h1>Hi! I'm Harmony Trygstad</h1>
+    <p class="welcome-text">
+      I'm a student at the University of Minnesota Duluth. Currently I'm pre-business, with the hope of majoring in Consumer Insights and Analytics. 
+      This site is a snapshot of who I am—my background, my passions, and the journey I'm on in college.  
+      Thanks for stopping by!  
+    
+      
+    </p>
+  </section>
+
+  <!-- Welcome Video Section -->
+  <section class="container" style="margin-top: 2rem;">
+    <h2 style="color: var(--dark-olive); margin-bottom: 1.5rem; font-size: 2.2rem;">Welcome Video</h2>
+    <div style="background: rgba(255, 255, 255, 0.7); padding: 2rem; border-radius: 20px; margin: 1rem 0;">
+      <div style="width:100%;max-width:880px;margin:0 auto;">
+        <div style="position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(45,48,33,0.12);">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;opacity:.85;">
+            Video placeholder — replace with your embed or MP4 later
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hobbies Section -->
+  <section class="container reveal" style="margin-top: 2rem;">
+    <div class="sprig sprig--tl" aria-hidden="true">
+      <img src="Images/leaf.webp" alt="" width="72" height="72" style="object-fit: contain;">
+    </div>
+    <div class="sprig sprig--br" aria-hidden="true">
+      <img src="Images/leaf.webp" alt="" width="72" height="72" style="object-fit: contain;">
+    </div>
+    <h2 style="color: var(--dark-olive); margin-bottom: 2rem; font-size: 2.2rem; text-align: center;">My Hobbies</h2>
+    
+    <!-- FFA Hobby -->
+    <div class="hobby-container" style="display: flex; align-items: center; gap: 2rem; margin-bottom: 3rem; background: rgba(255, 255, 255, 0.7); padding: 2rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(45,48,33,0.1);">
+      <div style="flex: 1;">
+        <h3 style="color: var(--sage); font-size: 1.8rem; margin-bottom: 1rem;">FFA</h3>
+        <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
+          FFA has been a huge part of my life, shaping who I am today. From competing in forestry contests to serving as a regional officer, I've learned leadership, teamwork, and confidence. These experiences gave me opportunities to grow and connect with amazing people who share my passion for agriculture and natural resources.
+        </p>
+      </div>
+      <div class="hobby-image" style="flex: 0 0 200px;">
+        <img src="Images/ffa.JPEG" alt="FFA Experience" style="width: 100%; height: auto; border-radius: 15px; box-shadow: 0 5px 15px rgba(45,48,33,0.2);">
+      </div>
+    </div>
+
+    <!-- Reading Hobby -->
+    <div class="hobby-container" style="display: flex; align-items: center; gap: 2rem; background: rgba(255, 255, 255, 0.7); padding: 2rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(45,48,33,0.1);">
+      <div class="hobby-image" style="flex: 0 0 200px;">
+        <img src="Images/blindbook.JPG" alt="Reading Books" style="width: 100%; height: auto; border-radius: 15px; box-shadow: 0 5px 15px rgba(45,48,33,0.2);">
+      </div>
+      <div style="flex: 1;">
+        <h3 style="color: var(--sage); font-size: 1.8rem; margin-bottom: 1rem;">Reading</h3>
+        <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
+          Reading has always been a fun hobby of mine, ever since I was working hard to get AR points back in elementary school. I love reading different fiction books, and can read for hours. Once I get started on a book, I will sit there until the book is finished. I still list reading as one of my top hobbies, just don't look at how many books I've read so far this year. I have the goal of reading 25 books this year and so far I've read 4. It's okay though, I still have the rest of the year.
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem; text-align:center;">
+      <a href="hobbies.html" class="learn-more-btn">Learn More</a>
+    </div>
+  </section>
+
+
+
+  <script>
+    // Generate soft twinkling stars
+    const starContainer = document.getElementById('stars');
+    const starCount = 80;
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      star.style.opacity = (0.3 + Math.random() * 0.7).toString();
+      starContainer.appendChild(star);
+    }
+
+
+    // Scroll-based interactions
+    const nav = document.querySelector('nav');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+   
+    window.addEventListener('scroll', () => {
+      // Navigation bar effect
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+     
+      // Show/hide scroll to top button (guard if missing)
+      if (scrollIndicator) {
+        if (window.scrollY > 300) {
+          scrollIndicator.classList.add('visible');
+        } else {
+          scrollIndicator.classList.remove('visible');
+        }
+      }
+    });
+
+
+    // Smooth scroll to top (guard if button exists)
+    if (scrollIndicator) {
+      scrollIndicator.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+
+    // Active navigation link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        e.target.classList.add('active');
+      });
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const onScroll = () => {
+      const trigger = window.innerHeight * 0.9;
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < trigger) el.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', () => {
+      // ensure visible on initial load even if no scroll
+      reveals.forEach(el => el.classList.add('visible'));
+      onScroll();
+    });
+  </script>
+
+
+</body>
+</html>
+
+
