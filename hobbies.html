@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hobbies | Harmony Trygstad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #acbda1;
+      --sage: #d2b48c;
+      --soft-sage: #bdc5a5;
+      --olive: #8b8e76;
+      --dark-olive: #2d3021;
+      --soft-white: #ffffff;
+      --stone: #ebe6e6;
+      --accent: #b49e6f;
+      --text-main: #222222;
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--cream);
+      color: var(--text-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+
+    /* ---------- NAVIGATION ---------- */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.2rem;
+      background: rgba(240, 234, 216, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--soft-sage);
+      box-shadow: 0 2px 15px rgba(45,48,33,0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    nav.scrolled { padding: 0.8rem; background: rgba(240, 234, 216, 0.98); }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark-olive);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    nav a::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: var(--sage);
+      border-radius: 20px;
+      opacity: 0; transform: scale(0.8);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+    nav a:hover { color: var(--cream); }
+    nav a:hover::before { opacity: 1; transform: scale(1); }
+    nav a.active { color: var(--cream); background: var(--sage); }
+
+
+    /* ---------- HEADER ---------- */
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+
+    header h1 {
+      font-size: 2.8rem;
+      color: var(--dark-olive);
+      font-family: 'Playfair Display', 'Lora', serif;
+      margin-bottom: 1rem;
+    }
+
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+
+    .hobby-section {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(45,48,33,0.12);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+
+    .hobby-section:hover {
+      transform: translateY(-4px);
+    }
+
+
+    .hobby-text {
+      flex: 1 1 350px;
+    }
+
+
+    .hobby-text h2 {
+      color: var(--olive);
+      font-family: 'Playfair Display', 'Lora', serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+
+    .hobby-text p {
+      line-height: 1.6;
+    }
+
+
+    .hobby-image {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+    }
+
+
+    .hobby-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      height: 230px;
+      width: 100%;
+    }
+
+    /* show a bit more of the top of an image */
+    .object-top-boost { object-position: center 18%; }
+
+
+    /* ---------- PERSONAL STORIES ---------- */
+    .stories {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(45,48,33,0.12);
+    }
+
+
+    .stories h2 {
+      text-align: center;
+      color: var(--dark-olive);
+      font-family: 'Playfair Display', 'Lora', serif;
+      margin-bottom: 1.5rem;
+      font-size: 1.9rem;
+    }
+
+
+    .story {
+      margin-bottom: 1.5rem;
+    }
+
+
+    .story h3 {
+      color: var(--olive);
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+
+    .story p {
+      line-height: 1.6;
+    }
+
+
+    /* ---------- IMPORTANCE ---------- */
+    .importance {
+      text-align: center;
+      margin: 3rem auto 4rem;
+      max-width: 800px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: var(--text-main);
+      padding: 0 1rem;
+    }
+
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      .hobby-section { flex-direction: column; }
+      .hobby-image img { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="hobbies.html" class="active" aria-current="page">Hobbies</a>
+    <a href="duluth.html">Discover Duluth</a>
+    <a href="resume.html">Resume</a>
+    <a href="career.html">Career Interests</a>
+    <a href="game.html">Game</a>
+  </nav>
+
+
+  <!-- HEADER -->
+  <header>
+    <h1>My Hobbies & Passions</h1>
+    <p>
+      These are the activities that shape who I am—what inspires me, challenges me, and brings me joy.
+    </p>
+    <div aria-hidden="true" style="position:relative;height:0;">
+      <img src="Images/leaf.webp" alt="" width="72" height="72" style="position:absolute;left:8px;top:-12px;opacity:.55;filter:drop-shadow(0 4px 8px rgba(45,48,33,.15));object-fit:contain;">
+      <img src="Images/leaf.webp" alt="" width="72" height="72" style="position:absolute;right:8px;top:-10px;opacity:.55;filter:drop-shadow(0 4px 8px rgba(45,48,33,.15));transform:rotate(10deg);object-fit:contain;">
+    </div>
+  </header>
+
+
+  <!-- HOBBIES -->
+  <section>
+    <div class="hobby-section">
+      <div class="hobby-text">
+        <h2>FFA & Forestry</h2>
+        <p>
+          FFA gave me some of my most rewarding high school experiences.  
+          I competed at a high level in forestry—earning first place in the state—and served as a regional officer, where I had the chance to help guide younger members and represent my peers.  
+          FFA wasn’t just about contests; it was about building leadership skills, learning responsibility, and working toward goals with a team.
+        </p>
+      </div>
+      <div class="hobby-image">
+        <img src="Images/tree.JPEG" alt="FFA & Forestry trees">
+      </div>
+    </div>
+
+
+    <div class="hobby-section">
+      <div class="hobby-text">
+        <h2>Reading</h2>
+        <p>
+          Reading is one of my favorite hobbies because it balances out the busyness of everyday life.  
+          Books give me both relaxation and inspiration, whether I’m getting lost in a story, learning something new, or finding a character that feels a little bit like me.  
+          I love recommending great books and talking about favorite authors with friends.
+        </p>
+      </div>
+      <div class="hobby-image">
+        <img src="Images/books.JPG" alt="Stack of books for reading">
+      </div>
+    </div>
+
+
+    <div class="hobby-section">
+      <div class="hobby-text">
+        <h2>Spending Time with Friends</h2>
+        <p>
+          Back home, we’d go to trivia at Zorbaz most Thursdays—it was always fun, even if we never actually won.  
+          We’d also wander Walmart since that was one of the only things to do in town.  
+          In Duluth, I’ve gotten to explore so many new places with friends, both outdoors and in the city. Every adventure has made this chapter even more special.
+        </p>
+      </div>
+      <div class="hobby-image">
+        <img src="Images/friends.jpg" alt="Friends and adventures" class="object-top-boost">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PERSONAL STORIES -->
+  <section class="stories">
+    <h2>Personal Stories</h2>
+
+
+    <div class="story">
+      <h3>National FFA Convention</h3>
+      <p>
+        Traveling to national convention was a defining moment. I got to see the larger FFA community, connect with students from all over the country, and feel part of something bigger. Not to mention we getting to be on stage as the 2nd place team and 5th place individual in the nation in the forestry contest...
+      </p>
+    </div>
+
+
+    <div class="story">
+      <h3>Prescribed Burn</h3>
+      <p>
+        One of the most memorable forestry experiences was participating in a prescribed burn. It was such a moment of time, where because I participate in FFA I was able to do such a cool and educational activity with friends.
+      </p>
+    </div>
+
+
+    <div class="story">
+      <h3>The "Iditaread" Challenge</h3>
+      <p>
+        In third grade, I participated in a reading challenge called “Iditaread.” It was a play on the Iditarod dog sled race that takes place in Alaska. Instead of hitting milestones in an actual race, we hit milestones in the amount of books that we read. I remember having a blast completing books and earning prizes. 
+      </p>
+    </div>
+
+
+    <div class="story">
+      <h3>The Fargo Bookstore</h3>
+      <p>
+        Visiting a charming independent bookstore in Fargo has also been a fun moment in reading for me. The store has stacks upon stacks of books on shelves and on the floor. To be able to scower the place for a book that I would read at a fairly decent price is always fun.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- IMPORTANCE -->
+  <div class="importance">
+    FFA taught me leadership, discipline, and the value of community.  
+    Reading gives me creativity, empathy, and perspective.  
+    Time with friends fills my life with laughter and belonging.  
+    Together, these hobbies represent balance: achieving goals while remembering to slow down and enjoy life.
+  </div>
+
+
+</body>
+</html>
+<script>
+  (function(){
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    });
+  })();
+</script>
