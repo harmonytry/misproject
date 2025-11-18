@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream: #acbda1;
+      --cream: #9CAF88;
       --sage: #d2b48c;
       --soft-sage: #bdc5a5;
       --olive: #8b8e76;
@@ -18,6 +18,8 @@
       --stone: #ebe6e6;
       --accent: #b49e6f;
       --text-main: #222222;
+      --muted: #5d6e56; /* ensure hobbies footer color matches Duluth page */
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
 
@@ -50,7 +52,7 @@
       z-index: 10;
       border-bottom: 1px solid var(--soft-sage);
       box-shadow: 0 2px 15px rgba(45,48,33,0.1);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: var(--transition);
     }
 
     nav.scrolled { padding: 0.8rem; background: rgba(240, 234, 216, 0.98); }
@@ -63,7 +65,7 @@
       position: relative;
       padding: 0.5rem 1rem;
       border-radius: 20px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: var(--transition);
     }
     nav a::before {
       content: '';
@@ -72,12 +74,12 @@
       background: var(--sage);
       border-radius: 20px;
       opacity: 0; transform: scale(0.8);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: var(--transition);
       z-index: -1;
     }
-    nav a:hover { color: var(--cream); }
+    nav a:hover { color: #ffffff; }
     nav a:hover::before { opacity: 1; transform: scale(1); }
-    nav a.active { color: var(--cream); background: var(--sage); }
+    nav a.active { color: var(--cream); }
 
 
     /* ---------- HEADER ---------- */
@@ -231,7 +233,7 @@
   <!-- NAVIGATION -->
   <nav>
     <a href="index.html">Home</a>
-    <a href="hobbies.html" class="active" aria-current="page">Hobbies</a>
+    <a href="hobbies.html">Hobbies</a>
     <a href="duluth.html">Discover Duluth</a>
     <a href="resume.html">Resume</a>
     <a href="career.html">Career Interests</a>
@@ -260,7 +262,7 @@
         <p>
           FFA gave me some of my most rewarding high school experiences.  
           I competed at a high level in forestry—earning first place in the state—and served as a regional officer, where I had the chance to help guide younger members and represent my peers.  
-          FFA wasn’t just about contests; it was about building leadership skills, learning responsibility, and working toward goals with a team.
+          FFA wasn't just about contests; it was about building leadership skills, learning responsibility, and working toward goals with a team.
         </p>
       </div>
       <div class="hobby-image">
@@ -274,7 +276,7 @@
         <h2>Reading</h2>
         <p>
           Reading is one of my favorite hobbies because it balances out the busyness of everyday life.  
-          Books give me both relaxation and inspiration, whether I’m getting lost in a story, learning something new, or finding a character that feels a little bit like me.  
+          Books give me both relaxation and inspiration, whether I'm getting lost in a story, learning something new, or finding a character that feels a little bit like me.  
           I love recommending great books and talking about favorite authors with friends.
         </p>
       </div>
@@ -288,9 +290,9 @@
       <div class="hobby-text">
         <h2>Spending Time with Friends</h2>
         <p>
-          Back home, we’d go to trivia at Zorbaz most Thursdays—it was always fun, even if we never actually won.  
-          We’d also wander Walmart since that was one of the only things to do in town.  
-          In Duluth, I’ve gotten to explore so many new places with friends, both outdoors and in the city. Every adventure has made this chapter even more special.
+          Back home, we'd go to trivia at Zorbaz most Thursdays—it was always fun, even if we never actually won.  
+          We'd also wander Walmart since that was one of the only things to do in town.  
+          In Duluth, I've gotten to explore so many new places with friends, both outdoors and in the city. Every adventure has made this chapter even more special.
         </p>
       </div>
       <div class="hobby-image">
@@ -324,7 +326,7 @@
     <div class="story">
       <h3>The "Iditaread" Challenge</h3>
       <p>
-        In third grade, I participated in a reading challenge called “Iditaread.” It was a play on the Iditarod dog sled race that takes place in Alaska. Instead of hitting milestones in an actual race, we hit milestones in the amount of books that we read. I remember having a blast completing books and earning prizes. 
+        In third grade, I participated in a reading challenge called "Iditaread." It was a play on the Iditarod dog sled race that takes place in Alaska. Instead of hitting milestones in an actual race, we hit milestones in the amount of books that we read. I remember having a blast completing books and earning prizes. 
       </p>
     </div>
 
@@ -347,13 +349,21 @@
   </div>
 
 
+  <!-- FOOTER (consistent) -->
+  <footer style="max-width:1100px;margin:2.25rem auto;padding:1rem;text-align:center;color:var(--muted);">
+    © <span id="year"></span> Harmony Trygstad
+  </footer>
+
+  <script>
+    // set footer year and keep nav scroll behavior
+    (function(){
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+      const nav = document.querySelector('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+      });
+    })();
+  </script>
 </body>
 </html>
-<script>
-  (function(){
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-    });
-  })();
-</script>

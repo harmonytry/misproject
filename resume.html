@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,8 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --cream: #acbda1;
-      --sage: #8e9e84;
+      --cream: #9CAF88;
+      --sage: #d2b48c;
       --soft-sage: #bdc5a5;
       --olive: #8b8e76;
       --dark-olive: #2d3021;
@@ -18,16 +20,15 @@
       --stone: #ebe6e6;
       --accent: #b49e6f;
       --text-main: #222222;
+      --muted: #5d6e56;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
 
     body {
       font-family: 'Lora', Georgia, serif;
@@ -37,7 +38,6 @@
       position: relative;
       min-height: 100vh;
     }
-
 
     /* -------- NAVIGATION -------- */
     nav {
@@ -52,15 +52,13 @@
       z-index: 10;
       border-bottom: 1px solid var(--soft-sage);
       box-shadow: 0 2px 15px rgba(45,48,33,0.1);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: var(--transition);
     }
-
 
     nav.scrolled {
       padding: 0.8rem;
       background: rgba(240, 234, 216, 0.98);
     }
-
 
     nav a {
       text-decoration: none;
@@ -70,9 +68,8 @@
       position: relative;
       padding: 0.5rem 1rem;
       border-radius: 20px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: var(--transition);
     }
-
 
     nav a::before {
       content: '';
@@ -85,27 +82,22 @@
       border-radius: 20px;
       opacity: 0;
       transform: scale(0.8);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: var(--transition);
       z-index: -1;
     }
 
-
     nav a:hover {
-      color: var(--cream);
+      color: #ffffff;
     }
-
 
     nav a:hover::before {
       opacity: 1;
       transform: scale(1);
     }
 
-
     nav a.active {
       color: var(--cream);
-      background: var(--sage);
     }
-
 
     header {
       text-align: center;
@@ -126,13 +118,11 @@
       font-size: 1.05rem;
     }
 
-
     main {
       max-width: 1100px;
       margin: 1.75rem auto;
       padding: 0 1rem;
     }
-
 
     .card {
       background: rgba(255,255,255,0.78);
@@ -151,7 +141,6 @@
       font-family: 'Playfair Display', 'Lora', serif;
     }
 
-
     .resume-section {
       margin-top: 1rem;
     }
@@ -168,7 +157,6 @@
     ul { list-style: disc inside; }
     li { margin-bottom: .4rem; }
 
-
     .download-btn {
       display: inline-block;
       background: var(--sage);
@@ -184,7 +172,6 @@
       background: var(--olive);
     }
 
-
     footer {
       max-width: 1100px;
       margin: 2.25rem auto;
@@ -192,7 +179,6 @@
       text-align: center;
       color: var(--muted);
     }
-
 
     @media (max-width: 520px) {
       header h1 { font-size: 1.9rem; }
@@ -203,17 +189,15 @@
 </head>
 <body>
 
-
   <!-- NAV -->
   <nav>
     <a href="index.html">Home</a>
     <a href="hobbies.html">Hobbies</a>
     <a href="duluth.html">Discover Duluth</a>
-    <a href="resume.html" class="active" aria-current="page">Resume</a>
+    <a href="resume.html">Resume</a>
     <a href="career.html">Career Interests</a>
     <a href="game.html">Game</a>
   </nav>
-
 
   <!-- HEADER -->
   <header>
@@ -225,21 +209,17 @@
     </div>
   </header>
 
-
   <main>
-
 
     <!-- Resume Card -->
     <article class="card">
       <h2>Harmony Trygstad</h2>
       <p>Duluth, MN | 218-255-1805 | harmonytrygstad@gmail.com</p>
 
-
       <div class="resume-section">
         <h3>Objective</h3>
-        <p>Motivated pre-business student at the University of Minnesota Duluth, pursuing a Bachelor’s in Consumer Insights and Analytics (expected 2029). Seeking entry-level opportunities in market research and consumer insights where I can leverage my analytical skills, leadership experience, and passion for understanding consumer behavior to contribute to data-driven business decisions.</p>
+        <p>Motivated pre-business student at the University of Minnesota Duluth, pursuing a Bachelor's in Consumer Insights and Analytics (expected 2029). Seeking entry-level opportunities in market research and consumer insights where I can leverage my analytical skills, leadership experience, and passion for understanding consumer behavior to contribute to data-driven business decisions.</p>
       </div>
-
 
       <div class="resume-section">
         <h3>Education</h3>
@@ -247,22 +227,19 @@
         B.B.A. Consumer Insights & Analytics (Expected 2029)<br>
         Relevant coursework: IT in Business</p>
 
-
         <p><strong>Park Rapids High School</strong> — Park Rapids, MN<br>
         High School Diploma, Salutatorian, GPA: 3.99<br>
         Relevant coursework: Computer Applications, Webpage Development</p>
       </div>
 
-
       <div class="resume-section">
         <h3>Experience</h3>
         <ul>
-          <li><strong>Cabin Cleaner</strong> – Loon’s Nest Resort (Summer 2023) — Maintained cabins, developed attention to detail.</li>
+          <li><strong>Cabin Cleaner</strong> – Loon's Nest Resort (Summer 2023) — Maintained cabins, developed attention to detail.</li>
           <li><strong>Attraction Attendant</strong> – Evergreen Fun Park (Summer 2024) — Assisted guests, adapted quickly, ensured safety.</li>
-          <li><strong>Mini Golf Attendant</strong> – Birdie’s Mini Golf (Summer 2025) — Managed operations, strengthened interpersonal skills.</li>
+          <li><strong>Mini Golf Attendant</strong> – Birdie's Mini Golf (Summer 2025) — Managed operations, strengthened interpersonal skills.</li>
         </ul>
       </div>
-
 
       <div class="resume-section">
         <h3>Leadership & Activities</h3>
@@ -272,7 +249,6 @@
           <li>UMD ASL Club — Active Member</li>
         </ul>
       </div>
-
 
       <div class="resume-section">
         <h3>Skills</h3>
@@ -284,7 +260,6 @@
         </ul>
       </div>
 
-
       <div class="resume-section">
         <h3>Honors & Achievements</h3>
         <ul>
@@ -294,19 +269,15 @@
         </ul>
       </div>
 
-
       <!-- Download Button -->
-      <a class="download-btn" href="Harmony_Trygstad_Resume.pdf" download>⬇ Download PDF Resume</a>
+    <a id="download-resume" class="download-btn" href="PDFs/WordFiles/Harmony_Trygstad_Resume.pdf" download="Harmony_Trygstad_Resume.pdf">⬇ Download PDF Resume</a>
     </article>
-
 
   </main>
 
-
   <footer>
-    © <span id="year"></span> Harmony Trygstad — University of Minnesota Duluth
+    © <span id="year"></span> Harmony Trygstad
   </footer>
-
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -318,8 +289,47 @@
         if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
       });
     })();
-  </script>
+    
+      // Force-download fallback for the resume PDF button.
+      // Some browsers open PDFs instead of downloading; this fetches the file and triggers a blob download.
+      (function(){
+        const link = document.getElementById('download-resume');
+        if (!link) return;
 
+        link.addEventListener('click', function(e){
+          // Let the native download work where supported; still provide fallback
+          // Prevent default behavior so we can fetch and force-download
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          if (!href) return window.location.href = href;
+
+          // Try fetching the resource and force a download via blob
+          fetch(href, { cache: 'no-store' })
+            .then(response => {
+              if (!response.ok) throw new Error('Network response was not ok');
+              return response.blob();
+            })
+            .then(blob => {
+              const blobUrl = window.URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.style.display = 'none';
+              a.href = blobUrl;
+              // use the filename from the href as download name
+              const filename = href.split('/').pop() || 'resume.pdf';
+              a.download = filename;
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+              // release object URL after a short delay
+              setTimeout(() => window.URL.revokeObjectURL(blobUrl), 1000);
+            })
+            .catch(() => {
+              // If fetch fails, fall back to standard navigation which may open the PDF
+              window.location.href = href;
+            });
+        });
+      })();
+  </script>
 
 </body>
 </html>

@@ -7,8 +7,8 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
     :root {
-      --cream: #acbda1;
-      --sage: #8e9e84;
+      --cream: #9CAF88;
+      --sage: #d2b48c;
       --soft-sage: #bdc5a5;
       --olive: #8b8e76;
       --dark-olive: #2d3021;
@@ -73,9 +73,9 @@
       transition: var(--transition);
       z-index: -1;
     }
-    nav a:hover { color: var(--cream); }
+    nav a:hover { color: #ffffff; }
     nav a:hover::before { opacity: 1; transform: scale(1); }
-    nav a.active { color: var(--cream); background: var(--sage); }
+    nav a.active { color: var(--cream); }
 
 
     /* Page header */
@@ -234,11 +234,11 @@
 <body>
 
 
-  <!-- NAV: mirror the Home/Hobbies pages (update hrefs as needed) -->
+  <!-- NAV: mirror the Home/Hobbies pages -->
   <nav>
     <a href="index.html">Home</a>
     <a href="hobbies.html">Hobbies</a>
-    <a href="duluth.html" class="active" aria-current="page">Discover Duluth</a>
+    <a href="duluth.html">Discover Duluth</a>
     <a href="resume.html">Resume</a>
     <a href="career.html">Career Interests</a>
     <a href="game.html">Game</a>
@@ -311,28 +311,25 @@
     <article class="card" id="personal-experiences">
       <div class="text">
         <h2>Personal experiences & campus highlights</h2>
-        <div class="columns" style="margin-top:1rem;">
-          <div>
-            <h3 style="color:var(--olive); margin-bottom:.5rem;">Clubs I've joined</h3>
-            <ul>
-              <li>Women in Psychological Sciences</li>
-              <li>Analytics Club</li>
-              <li>Coffee Club</li>
-              <li>ASL Club</li>
-              <li>The Navigators</li>
-            </ul>
-          </div>
+            <div class="columns" style="margin-top:1rem;">
+              <div>
+                <h3 style="color:var(--olive); margin-bottom:.5rem;">Clubs I've joined</h3>
+                <ul>
+                  <li>Country Line Dancing</li>
+                  <li>Analytics Club</li>
+                  <li>Coffee Club</li>
+                  <li>ASL Club</li>
+                  <li>The Navigators</li>
+                </ul>
+              </div>
 
-          <div>
-            <h3 style="color:var(--olive); margin-bottom:.5rem;">Housing events & campus favorites</h3>
-            <ul>
-              <li>Hotdogs on Griggs Beach — a classic housing hangout</li>
-              <li>Nostalgia Night — fun themed socials</li>
-              <li>Connected indoor walkways that make winter campus life cozy</li>
-              <li>Local coffeeshops & small bookstores for studying and relaxing</li>
-            </ul>
-          </div>
-        </div>
+              <div>
+                <h3 style="color:var(--olive); margin-bottom:.5rem;">Personal highlights</h3>
+                <p style="margin-bottom:.6rem;">I love the small, lively moments UMD offers, like the Friday-night events in EF2 or the Kirby Program Board events (trivia, bingo, tote-bag painting). They're fun, welcoming, and often send me home with a soda or snack to enjoy the next day. I also really appreciate how the whole campus is connected. On colder days I can get everywhere I need without stepping outside. 
+                </p>
+                <p style="margin-top:0.25rem;">Sometimes I'll wander into random club events and end up having a blast. Anything from country swing nights to community tie-blanket service projects. Little conveniences like a short drive to Target make campus life feel practical and comfortable while I focus on classes and friends.</p>
+              </div>
+            </div>
       </div>
 
 
@@ -348,7 +345,7 @@
 
   <!-- FOOTER (simple, consistent) -->
   <footer style="max-width:1100px;margin:2.25rem auto;padding:1rem;text-align:center;color:var(--muted);">
-    © <span id="year"></span> Harmony Trygstad — University of Minnesota Duluth
+    © <span id="year"></span> Harmony Trygstad
   </footer>
 
 

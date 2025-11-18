@@ -7,8 +7,8 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
     :root {
-      --cream: #acbda1;
-      --sage: #8e9e84;
+      --cream: #9CAF88;
+      --sage: #d2b48c;
       --soft-sage: #bdc5a5;
       --olive: #8b8e76;
       --dark-olive: #2d3021;
@@ -16,6 +16,8 @@
       --stone: #ebe6e6;
       --accent: #b49e6f;
       --text-main: #222222;
+      --muted: #5d6e56;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,21 +43,70 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     nav.scrolled { padding: 0.8rem; background: rgba(240, 234, 216, 0.98); }
-    nav a { text-decoration: none; color: var(--dark-olive); font-weight: 600; letter-spacing: .5px; position: relative; padding: .5rem 1rem; border-radius: 20px; transition: all .3s cubic-bezier(0.4,0,0.2,1); }
-    nav a::before { content: ''; position: absolute; left:0; top:0; width:100%; height:100%; background: var(--sage); border-radius:20px; opacity:0; transform: scale(0.8); transition: all .3s cubic-bezier(0.4,0,0.2,1); z-index:-1; }
-    nav a:hover { color: var(--cream); }
+    nav a { text-decoration: none; color: var(--dark-olive); font-weight: 600; letter-spacing: 0.5px; position: relative; padding: 0.5rem 1rem; border-radius: 20px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    nav a::before { content: ''; position: absolute; left:0; top:0; width:100%; height:100%; background: var(--sage); border-radius:20px; opacity:0; transform: scale(0.8); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index:-1; }
+    nav a:hover { color: #ffffff; }
     nav a:hover::before { opacity:1; transform: scale(1); }
-    nav a.active { color: var(--cream); background: var(--sage); }
+    nav a.active { color: var(--cream); }
 
     header { text-align: center; padding: 2.5rem 1rem 1.5rem; max-width: 1000px; margin: 0 auto; }
     header h1 { font-size: 2.4rem; color: var(--dark-olive); margin-bottom: .5rem; }
     header h1, .card h2 { font-family: 'Playfair Display', 'Lora', serif; }
-    header p { color: #5d6e56; max-width: 800px; margin: 0 auto; }
+    header p { color: var(--muted); max-width: 800px; margin: 0 auto; }
 
     .container { max-width: 1000px; margin: 1.5rem auto; padding: 0 1rem; }
     .card { background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-radius: 14px; box-shadow: 0 8px 22px rgba(45,48,33,0.08); padding: 1.4rem; margin-bottom: 1.2rem; }
     .card h2 { color: var(--olive); margin-bottom: .5rem; }
     .card p { line-height: 1.6; }
+    
+    /* Enhanced styles for career content */
+    .company-card { background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-radius: 16px; box-shadow: 0 8px 22px rgba(45,48,33,0.08); padding: 1.8rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); }
+    .company-card h2 { color: var(--dark-olive); margin-bottom: .5rem; font-size: 1.4rem; }
+    .company-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+    .company-info { flex: 1; min-width: 250px; }
+    .contact-info { background: rgba(189, 197, 165, 0.15); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem; }
+    .contact-info strong { color: var(--dark-olive); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .skills-section { background: rgba(189, 197, 165, 0.1); padding: 1rem; border-radius: 8px; }
+    .skills-section h3 { color: var(--olive); margin-bottom: .5rem; font-size: 1.1rem; }
+    .skills-section ul { list-style: none; padding: 0; }
+    .skills-section li { padding: .2rem 0; padding-left: 1.2rem; position: relative; }
+    .skills-section li::before { content: '•'; color: var(--accent); position: absolute; left: 0; }
+    .alignment-box { background: linear-gradient(135deg, rgba(189, 197, 165, 0.1) 0%, rgba(180, 158, 111, 0.1) 100%); padding: 1.2rem; border-radius: 10px; margin: 1rem 0; border-left: 3px solid var(--olive); }
+    .bio-section { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: 16px; box-shadow: 0 8px 22px rgba(45,48,33,0.08); padding: 2rem; margin: 2rem 0; text-align: center; }
+    .bio-section h2 { color: var(--dark-olive); margin-bottom: 1rem; }
+    .cta-section { 
+      background: rgba(255,255,255,0.85); 
+      backdrop-filter: blur(10px); 
+      border-radius: 14px; 
+      box-shadow: 0 8px 22px rgba(45,48,33,0.08); 
+      padding: 2rem; 
+      text-align: center; 
+      margin: 2rem 0; 
+    }
+    .cta-section h2 { 
+      margin-bottom: 1rem; 
+      color: var(--dark-olive); 
+    }
+    .resume-btn { 
+      display: inline-block; 
+      background: var(--sage); 
+      color: var(--soft-white); 
+      font-weight: 600; 
+      padding: 0.8rem 1.5rem; 
+      border-radius: 8px; 
+      text-decoration: none; 
+      transition: background .2s ease; 
+      margin-top: 1rem; 
+      font-size: 1.1rem; 
+    }
+    .resume-btn:hover { 
+      background: var(--olive); 
+    }
+    @media (max-width: 768px) { 
+      .company-header { flex-direction: column; } 
+      .skills-grid { grid-template-columns: 1fr; } 
+    }
   </style>
 </head>
 <body>
@@ -65,13 +116,13 @@
     <a href="hobbies.html">Hobbies</a>
     <a href="duluth.html">Discover Duluth</a>
     <a href="resume.html">Resume</a>
-    <a href="career.html" class="active" aria-current="page">Career Interests</a>
+    <a href="career.html">Career Interests</a>
     <a href="game.html">Game</a>
   </nav>
 
   <header>
     <h1>Career Interests</h1>
-    <p>Exploring Consumer Insights & Analytics — blending data, creativity, and human understanding.</p>
+    <p>Where I want to work — how I fit. I'm a Consumer Insights & Analytics student at UMD focused on turning data and human stories into strategic actions.</p>
     <div aria-hidden="true" style="position:relative;height:0;">
       <img src="Images/leaf.webp" alt="" width="72" height="72" style="position:absolute;left:8px;top:-12px;opacity:.55;filter:drop-shadow(0 4px 8px rgba(45,48,33,.15));object-fit:contain;">
       <img src="Images/leaf.webp" alt="" width="72" height="72" style="position:absolute;right:8px;top:-10px;opacity:.55;filter:drop-shadow(0 4px 8px rgba(45,48,33,.15));transform:rotate(10deg);object-fit:contain;">
@@ -79,14 +130,147 @@
   </header>
 
   <main class="container">
-    <article class="card">
-      <h2>What I'm aiming for</h2>
-      <p>Roles in market research, consumer behavior analysis, or insights strategy where I can help organizations make better, human-centered decisions.</p>
+    
+    <!-- Personal Bio Section -->
+    <section class="bio-section">
+      <h2>My Professional Journey</h2>
+      <p>I'm motivated by turning consumer understanding into clear business actions. I enjoy both the technical side (data analysis, dashboards, measurements) and the human side (interviews, storytelling, empathy with consumers). My long-term goal is to manage mixed-methods research projects and to craft insights that directly influence product strategy, marketing, and customer experience.</p>
+    </section>
+
+    <!-- Company 1: Foresight Strategy -->
+    <article class="company-card">
+      <div class="company-header">
+        <div class="company-info">
+          <h2>Foresight Strategy</h2>
+          <p><em>Minneapolis</em></p>
+        </div>
+      </div>
+      
+      <div class="contact-info">
+        <strong>Contact Information:</strong><br>
+        Foresight Strategy<br>
+        1625 Hennepin Avenue, Suite 250<br>
+        Minneapolis, MN 55403<br>
+        Phone: (612) 486-5735<br>
+        Email: info@foresightstrategy.com
+      </div>
+
+      <h3>Why I'm interested in Foresight Strategy</h3>
+      <p>I'm drawn to Foresight Strategy because they combine strategic brand work with deep consumer understanding to help organizations make data-informed decisions. Their focus on turning insight into actionable strategy matches my career goal of using data to influence marketing and product decisions. I'm excited by the opportunity to learn from multidisciplinary teams that solve complex brand problems and to contribute to research and strategy projects that shape how brands talk to real people.</p>
+
+      <div class="skills-grid">
+        <div class="skills-section">
+          <h3>What I bring right now:</h3>
+          <ul>
+            <li>Foundation in business and analytics through UMD coursework</li>
+            <li>Classes like IT in Business and Economics providing basic data tools</li>
+            <li>Hands-on experience with data collection and organization</li>
+            <li>Skills in using spreadsheets and communicating clear summaries</li>
+          </ul>
+        </div>
+        <div class="skills-section">
+          <h3>Skills after graduation:</h3>
+          <ul>
+            <li>Advanced consumer insights & segmentation</li>
+            <li>Survey design and quantitative methods</li>
+            <li>Data analysis with SQL, Python/R</li>
+            <li>Data visualization & storytelling (Tableau/Power BI)</li>
+            <li>Qualitative research & UX methods</li>
+            <li>Project management & collaboration</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alignment-box">
+        <h3>How my skills align with Foresight Strategy's needs</h3>
+        <p>Foresight's work requires people who can translate both qualitative and quantitative insight into strategic recommendations. My training in consumer insights and analytics prepares me to be that translator: I can design and analyze studies, synthesize results into compelling recommendations, and present those recommendations to cross-functional teams. My interest in brand strategy and human-centered research aligns with Foresight's client-facing focus.</p>
+      </div>
     </article>
-    <article class="card">
-      <h2>Skills I'm building</h2>
-      <p>Data storytelling, research methods, behavioral insights, and communicating findings to different audiences.</p>
+
+    <!-- Company 2: Leede Research -->
+    <article class="company-card">
+      <div class="company-header">
+        <div class="company-info">
+          <h2>Leede Research</h2>
+          <p><em>Minneapolis / St. Louis Park</em></p>
+        </div>
+      </div>
+      
+      <div class="contact-info">
+        <strong>Contact Information:</strong><br>
+        Leede Research (Leede Minnesota)<br>
+        5353 Gamble Drive, Suite 150<br>
+        St. Louis Park, MN 55416<br>
+        Phone: (612) 314-4400<br>
+        Fax: (612) 314-4404<br>
+        <em>Full-service market research firm with in-person facilities and qualitative services in the Twin Cities</em>
+      </div>
+
+      <h3>Why I'm interested in Leede Research</h3>
+      <p>Leede Research's reputation as a long-standing, full-service market research firm with a strong qualitative facility is especially appealing. I'm excited by their hands-on qualitative work — focus groups, in-person usability testing, and ethnographic projects — because I want a role where I can interact directly with participants, design study protocols, and translate behavioral observations into actionable recommendations for clients. Leede's mix of qualitative and quantitative offerings is a perfect environment to develop both halves of my skill set.</p>
+
+      <div class="skills-grid">
+        <div class="skills-section">
+          <h3>What I bring right now:</h3>
+          <ul>
+            <li>Introductory classes at UMD teaching data gathering and organization</li>
+            <li>Learning to ask the right research questions</li>
+            <li>Skills in documenting findings clearly</li>
+            <li>Foundation in data presentation</li>
+          </ul>
+        </div>
+        <div class="skills-section">
+          <h3>Skills after graduation:</h3>
+          <ul>
+            <li>Expertise in qualitative methods</li>
+            <li>Quantitative basics & advanced methods</li>
+            <li>Usability & UX research skills</li>
+            <li>Recruitment & respondent management</li>
+            <li>Practical lab/facility experience</li>
+            <li>Strong communication & client reporting</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alignment-box">
+        <h3>How my skills align with Leede Research's needs</h3>
+        <p>Leede's emphasis on qualitative excellence and facility-based research matches my interest in hands-on, participant-focused study work. My training will equip me to lead or support in-person research projects, run moderator guides, analyze transcripts, and present clear, evidence-based recommendations. Because Leede serves clients across many industries, my consumer insights background will help me adapt methods and messaging to different business problems and audience segments.</p>
+      </div>
     </article>
+
+    <!-- Contribution & Growth Section -->
+    <section class="card">
+      <h2>How I can contribute immediately and grow quickly</h2>
+      <div class="skills-grid">
+        <div class="skills-section">
+          <h3>Immediate contribution:</h3>
+          <ul>
+            <li>Assist with data cleaning and transcription</li>
+            <li>Participant screening and note-taking</li>
+            <li>Preparing slide summaries</li>
+            <li>Supporting project logistics</li>
+            <li>Managing participant communications</li>
+          </ul>
+        </div>
+        <div class="skills-section">
+          <h3>Rapid growth potential:</h3>
+          <ul>
+            <li>With mentorship, I'll move into designing studies</li>
+            <li>Conducting analyses and creating visualizations</li>
+            <li>Presenting findings to clients</li>
+            <li>Becoming a bridge between raw data and strategic recommendations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Link Section -->
+    <section class="cta-section">
+      <h2>Ready to Learn More?</h2>
+      <p>Check out my detailed resume to see my full background, education, and experience.</p>
+      <a href="resume.html" class="resume-btn">View My Resume</a>
+    </section>
+
   </main>
 
   <script>
@@ -96,6 +280,19 @@
       window.addEventListener('scroll', () => {
         if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
       });
+    })();
+  </script>
+
+  <!-- FOOTER (consistent) -->
+  <footer style="max-width:1100px;margin:2.25rem auto;padding:1rem;text-align:center;color:var(--muted);">
+    © <span id="year"></span> Harmony Trygstad
+  </footer>
+
+  <script>
+    // ensure footer year is current
+    (function(){
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
 
