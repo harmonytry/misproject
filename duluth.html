@@ -228,6 +228,28 @@
       .image-grid img { height: 100px; }
     }
 
+    /* Mobile UX improvements: keep nav accessible and prevent horizontal sliding */
+    @media (max-width: 600px) {
+      html, body { overflow-x: hidden; }
+      nav {
+        position: fixed !important;
+        top: 0; left: 0; right: 0;
+        z-index: 10000;
+        display: flex;
+        gap: 0.6rem;
+        padding: 0.6rem 0.8rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      nav a { flex: 0 0 auto; }
+      /* ensure content is not hidden beneath the fixed nav */
+      body > main, main, header { padding-top: 72px; }
+      /* reduce wide paddings for narrow screens */
+      .card, .video-wrapper, .image-grid, .media { padding-left: 12px; padding-right: 12px; }
+      /* improve touch behavior */
+      body { touch-action: pan-y; }
+    }
+
 
   </style>
 </head>
@@ -304,6 +326,9 @@
           </video>
         </div>
       </div>
+    
+      <!-- Attribution for video production -->
+      <p style="text-align:center;color:var(--muted);font-size:0.95rem;margin-top:0.6rem;">With thanks to Kirsten Prinsen and Emily Marciniak for their help producing this video.</p>
     </article>
 
 

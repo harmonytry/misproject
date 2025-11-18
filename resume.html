@@ -185,6 +185,25 @@
       nav { gap: 1rem; padding: .8rem; }
       .card { padding: 1rem; }
     }
+
+    /* Mobile UX improvements: keep nav accessible and prevent horizontal sliding */
+    @media (max-width: 600px) {
+      html, body { overflow-x: hidden; }
+      nav {
+        position: fixed !important;
+        top: 0; left: 0; right: 0;
+        z-index: 10000;
+        display: flex;
+        gap: 0.6rem;
+        padding: 0.6rem 0.8rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      nav a { flex: 0 0 auto; }
+      body > main, header { padding-top: 72px; }
+      .card { padding-left: 12px; padding-right: 12px; }
+      body { touch-action: pan-y; }
+    }
   </style>
 </head>
 <body>
@@ -203,9 +222,9 @@
   <header>
     <h1>My Resume</h1>
     <p class="sub">Explore my education, experiences, and achievements — and download a PDF version below.</p>
-    <div aria-hidden="true" style="position:relative;height:0;">
-      <img src="Images/leaf.webp" alt="" width="72" height="72" style="position:absolute;left:8px;top:-12px;opacity:.55;filter:drop-shadow(0 4px 8px rgba(45,48,33,.15));object-fit:contain;">
-      <img src="Images/leaf.webp" alt="" width="72" height="72" style="position:absolute;right:8px;top:-10px;opacity:.55;filter:drop-shadow(0 4px 8px rgba(45,48,33,.15));transform:rotate(10deg);object-fit:contain;">
+      <div aria-hidden="true" style="position:relative;height:0;">
+      <img src="Images/leaf.webp" alt="Decorative leaf sprig" width="72" height="72" style="position:absolute;left:8px;top:-12px;opacity:.55;filter:drop-shadow(0 4px 8px rgba(45,48,33,.15));object-fit:contain;">
+      <img src="Images/leaf.webp" alt="Decorative leaf sprig" width="72" height="72" style="position:absolute;right:8px;top:-10px;opacity:.55;filter:drop-shadow(0 4px 8px rgba(45,48,33,.15));transform:rotate(10deg);object-fit:contain;">
     </div>
   </header>
 

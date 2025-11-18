@@ -248,6 +248,25 @@ body {
   min-width: 280px;
 }
 
+    /* Credit box styling: match other UI boxes in the game */
+    #credit-under {
+      background: linear-gradient(135deg, #FFF8DC, #FFE4B5);
+      padding: 10px 14px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+      border: 3px solid #D2691E;
+      color: #8B4513;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-align: center;
+      z-index: 100; /* match other UI panels so falling items (z-index:110) render in front */
+      pointer-events: none; /* avoid intercepting touches */
+      display: inline-block;
+    }
+
+    /* ensure the inner paragraph doesn't use a separate white background */
+    #credit-under p { background: transparent; margin: 0; color: inherit; font: inherit; }
+
 .level-progress-label {
   color: #8B4513;
   font-size: 14px;
@@ -466,6 +485,23 @@ nav a:hover::before {
 audio {
   display: none;
 }
+    
+    /* --- Mobile adjustments: reduce clumping and ensure credit is visible --- */
+    @media (max-width: 520px) {
+      /* push top UI down slightly and reduce sizes */
+      .audio-controls { top: 88px; left: 8px; max-width: 180px; font-size: 13px; }
+      .instructions { position: fixed; top: 200px; left: 8px; max-width: calc(100% - 16px); z-index: 220; }
+      .level-indicator { top: 92px; font-size: 16px; padding: 8px 14px; }
+      .score { top: 18px; right: 8px; font-size: 18px; padding: 8px 14px; }
+      .health-container { top: 52px; left: 8px; transform: none; min-width: 140px; }
+      .level-progress-container { top: 130px; right: 8px; min-width: 160px; }
+      .mug { bottom: 140px; width: 80px; height: 64px; }
+      .game-container { padding-top: 100px; }
+
+      /* Make the credit pill fixed and visible above other UI on phones */
+      .credit-pill, .credit-under { position: fixed !important; left: 12px !important; right: 12px !important; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 100 !important; display: block !important; pointer-events: none; text-align: center; }
+      .credit-pill p, .credit-under p { margin: 0; display: inline-block; background: transparent; padding: 8px 12px; border-radius: 10px; color: #5d6e56; font-size: 0.95rem; }
+    }
 </style>
 </head>
 <body>
@@ -548,6 +584,11 @@ audio {
       </div>
     </div>
 
+    <!-- Attribution: placed under the level progress container for visibility -->
+    <div id="credit-under" class="credit-under" style="position:absolute;pointer-events:none;z-index: index 100;;right:20px;text-align:center;">
+      <p>With thanks to Kirsten Prinsen and Emily Marciniak for their help creating this game.</p>
+    </div>
+
      <!-- PIXEL MUG DESIGN -->
      <div class="mug" id="mug"></div>
      <div class="steam-line"></div>
@@ -560,6 +601,8 @@ audio {
        <p>Final Score: <span id="finalScore">0</span></p>
        <button class="restart-btn" onclick="restartGame()">Play Again</button>
      </div>
+     
+    
   </div>
 
   <!-- AUDIO ELEMENTS -->
@@ -1027,6 +1070,34 @@ audio {
     window.addEventListener('load', () => {
       game = new CoffeeShopGame();
     });
+    
+    // Position the credit under the level progress container so it's visible
+    (function(){
+      const credit = document.getElementById('credit-under');
+      const container = document.querySelector('.game-container');
+      const prog = document.querySelector('.level-progress-container');
+      if (!credit || !container || !prog) return;
+
+      function placeCredit(){
+        const progRect = prog.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        // calculate position relative to the container
+        const top = progRect.bottom - containerRect.top + 8; // 8px gap
+        const right = containerRect.right - progRect.right + 20; // keep 20px right padding
+        credit.style.top = top + 'px';
+        // make width similar to progress box for neat alignment
+        const width = progRect.width;
+        credit.style.width = width + 'px';
+        credit.style.left = (progRect.left - containerRect.left) + 'px';
+      }
+
+      // initial placement and on resize/scroll
+      window.addEventListener('load', placeCredit);
+      window.addEventListener('resize', placeCredit);
+      window.addEventListener('scroll', placeCredit);
+      // call immediately
+      placeCredit();
+    })();
   </script>
 </body>
 </html>
