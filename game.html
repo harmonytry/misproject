@@ -485,22 +485,65 @@ nav a:hover::before {
 audio {
   display: none;
 }
-    
-    /* --- Mobile adjustments: reduce clumping and ensure credit is visible --- */
-    @media (max-width: 520px) {
-      /* push top UI down slightly and reduce sizes */
-      .audio-controls { top: 88px; left: 8px; max-width: 180px; font-size: 13px; }
-      .instructions { position: fixed; top: 200px; left: 8px; max-width: calc(100% - 16px); z-index: 220; }
-      .level-indicator { top: 92px; font-size: 16px; padding: 8px 14px; }
-      .score { top: 18px; right: 8px; font-size: 18px; padding: 8px 14px; }
-      .health-container { top: 52px; left: 8px; transform: none; min-width: 140px; }
-      .level-progress-container { top: 130px; right: 8px; min-width: 160px; }
-      .mug { bottom: 140px; width: 80px; height: 64px; }
-      .game-container { padding-top: 100px; }
+    /* --- Mobile adjustments: restructure the UI for narrow screens --- */
+    @media (max-width: 600px) {
+      /* make sure there's no horizontal overflow */
+      html, body { overflow-x: hidden; }
 
-      /* Make the credit pill fixed and visible above other UI on phones */
+      /* shrink the game area slightly so elements fit on small screens */
+      .game-container { height: calc(100vh - 72px); padding-top: 72px; }
+
+      /* Audio controls become a compact fixed bar near the top */
+      .audio-controls {
+        position: fixed;
+        top: 76px;
+        left: 8px;
+        right: 8px;
+        max-width: none;
+        padding: 10px;
+        font-size: 13px;
+        z-index: 220;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .audio-controls h4 { display: none; }
+      .audio-control-group { margin: 0; }
+
+      /* Instructions move into a narrow fixed card to avoid overlap */
+      .instructions {
+        position: fixed;
+        top: 128px;
+        left: 8px;
+        right: 8px;
+        max-width: none;
+        z-index: 210;
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      /* Stack the top UI elements compactly */
+      .score { position: fixed; top: 82px; right: 12px; font-size: 18px; padding: 8px 12px; z-index: 220; }
+      .health-container { position: fixed; top: 82px; left: 12px; transform: none; min-width: 140px; z-index: 220; }
+      .level-indicator { position: fixed; top: 116px; left: 50%; transform: translateX(-50%); font-size: 16px; padding: 6px 12px; z-index: 220; }
+      .level-progress-container { position: fixed; top: 156px; right: 12px; min-width: 160px; z-index: 220; }
+
+      /* Make falling items smaller so they don't crowd the view */
+      .falling-item { width: 36px; height: 36px; font-size: 20px; }
+
+      /* Reduce particle size */
+      .particle { width: 4px; height: 4px; }
+
+      /* Move mug up slightly so it doesn't collide with fixed UI */
+      .mug { bottom: 120px; width: 80px; height: 64px; }
+
+      /* Credit box styling for phones: use same panel styling and keep it visible */
       .credit-pill, .credit-under { position: fixed !important; left: 12px !important; right: 12px !important; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 100 !important; display: block !important; pointer-events: none; text-align: center; }
       .credit-pill p, .credit-under p { margin: 0; display: inline-block; background: transparent; padding: 8px 12px; border-radius: 10px; color: #5d6e56; font-size: 0.95rem; }
+
+      /* make sure touch behavior is vertical pan-friendly */
+      body { touch-action: pan-y; }
     }
 </style>
 </head>
