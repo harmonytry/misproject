@@ -350,7 +350,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 10;
+  z-index: 110;
   transition: none;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
 }
@@ -490,18 +490,36 @@ audio {
       /* make sure there's no horizontal overflow */
       html, body { overflow-x: hidden; }
 
+      /* Make top navigation behave like the homepage: fixed and reachable without scrolling */
+      nav {
+        position: fixed !important;
+        top: 0; left: 0; right: 0;
+        z-index: 10000;
+        display: flex;
+        gap: 0.6rem;
+        padding: 0.6rem 0.8rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        background: rgba(232, 245, 232, 0.95);
+        backdrop-filter: blur(8px);
+      }
+      nav a { flex: 0 0 auto; }
+
+      /* ensure content is not hidden beneath the fixed nav */
+      body > .game-container, .game-container { padding-top: 72px; }
+
       /* shrink the game area slightly so elements fit on small screens */
-      .game-container { height: calc(100vh - 72px); padding-top: 72px; }
+      .game-container { height: calc(100vh - 72px); }
 
       /* Audio controls become a compact fixed bar near the top */
       .audio-controls {
         position: fixed;
-        top: 76px;
+        top: 74px;
         left: 8px;
         right: 8px;
         max-width: none;
-        padding: 10px;
-        font-size: 13px;
+        padding: 8px;
+        font-size: 12px;
         z-index: 220;
         display: flex;
         gap: 8px;
@@ -514,36 +532,48 @@ audio {
       /* Instructions move into a narrow fixed card to avoid overlap */
       .instructions {
         position: fixed;
-        top: 128px;
+        top: 120px;
         left: 8px;
         right: 8px;
         max-width: none;
         z-index: 210;
-        font-size: 14px;
-        padding: 12px;
+        font-size: 13px;
+        padding: 10px;
       }
 
-      /* Stack the top UI elements compactly */
-      .score { position: fixed; top: 82px; right: 12px; font-size: 18px; padding: 8px 12px; z-index: 220; }
-      .health-container { position: fixed; top: 82px; left: 12px; transform: none; min-width: 140px; z-index: 220; }
-      .level-indicator { position: fixed; top: 116px; left: 50%; transform: translateX(-50%); font-size: 16px; padding: 6px 12px; z-index: 220; }
-      .level-progress-container { position: fixed; top: 156px; right: 12px; min-width: 160px; z-index: 220; }
+      /* Stack the top UI elements compactly and smaller */
+      .score { position: fixed; top: 82px; right: 12px; font-size: 16px; padding: 6px 10px; z-index: 220; }
+      .health-container { position: fixed; top: 82px; left: 12px; transform: none; min-width: 120px; padding: 8px 10px; z-index: 220; }
+      .level-indicator { position: fixed; top: 112px; left: 50%; transform: translateX(-50%); font-size: 14px; padding: 6px 10px; z-index: 220; }
+      .level-progress-container { position: fixed; top: 152px; right: 12px; min-width: 140px; z-index: 220; padding: 8px 10px; }
 
       /* Make falling items smaller so they don't crowd the view */
-      .falling-item { width: 36px; height: 36px; font-size: 20px; }
+      .falling-item { width: 34px; height: 34px; font-size: 18px; }
 
       /* Reduce particle size */
       .particle { width: 4px; height: 4px; }
 
       /* Move mug up slightly so it doesn't collide with fixed UI */
-      .mug { bottom: 120px; width: 80px; height: 64px; }
+      .mug { bottom: 110px; width: 76px; height: 60px; }
 
       /* Credit box styling for phones: use same panel styling and keep it visible */
       .credit-pill, .credit-under { position: fixed !important; left: 12px !important; right: 12px !important; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 100 !important; display: block !important; pointer-events: none; text-align: center; }
-      .credit-pill p, .credit-under p { margin: 0; display: inline-block; background: transparent; padding: 8px 12px; border-radius: 10px; color: #5d6e56; font-size: 0.95rem; }
+      .credit-pill p, .credit-under p { margin: 0; display: inline-block; background: transparent; padding: 6px 10px; border-radius: 10px; color: #5d6e56; font-size: 0.9rem; }
 
       /* make sure touch behavior is vertical pan-friendly */
       body { touch-action: pan-y; }
+    }
+
+    /* Extra-tight layout for very small phones to avoid any overlap */
+    @media (max-width: 420px) {
+      .audio-controls { top: 68px; padding: 6px; font-size: 12px; }
+      .instructions { top: 108px; padding: 8px; font-size: 12px; }
+      .score { top: 74px; font-size: 14px; padding: 6px 8px; }
+      .health-container { top: 74px; min-width: 110px; padding: 6px 8px; }
+      .level-indicator { top: 100px; font-size: 13px; padding: 5px 8px; }
+      .level-progress-container { top: 136px; min-width: 120px; padding: 6px 8px; }
+      .falling-item { width: 30px; height: 30px; font-size: 16px; }
+      .mug { bottom: 100px; width: 70px; height: 56px; }
     }
 </style>
 </head>
